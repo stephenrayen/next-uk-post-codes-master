@@ -16,7 +16,7 @@ jobs:
         
   DeployPROD:
     runs-on: ubuntu-latest
-    environment: dev
+    environment: prod
     steps:
       - name: deploy
         # ...deployment-specific steps
