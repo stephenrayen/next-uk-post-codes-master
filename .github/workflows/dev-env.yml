@@ -1,0 +1,15 @@
+name: Deployment
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  deployment:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
+        echo { secrets.ENVIRONMENT }
