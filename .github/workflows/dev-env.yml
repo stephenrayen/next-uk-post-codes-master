@@ -12,4 +12,4 @@ jobs:
     steps:
       - name: deploy
         # ...deployment-specific steps
-        echo { secrets.ENVIRONMENT }
+        run: echo "${{secrets.ENVIRONMENT}}"
