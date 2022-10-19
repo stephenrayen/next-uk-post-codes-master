@@ -6,7 +6,15 @@ on:
       - master
 
 jobs:
-  deployment:
+  DeployDEV:
+    runs-on: ubuntu-latest
+    environment: dev
+    steps:
+      - name: deploy
+        # ...deployment-specific steps
+        run: echo "${{secrets.ENVIRONMENT}}"
+        
+  DeployPROD:
     runs-on: ubuntu-latest
     environment: dev
     steps:
