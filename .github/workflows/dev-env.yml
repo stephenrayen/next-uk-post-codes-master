@@ -13,13 +13,11 @@ jobs:
     environment: dev
     steps:
       - name: deploy
-        # ...deployment-specific steps
-        run: echo "${{env.ENVIRONMENT}}"
+        run: echo "${{env}}"
         
   DeployPROD:
     runs-on: ubuntu-latest
     environment: prod
     steps:
       - name: deploy
-        # ...deployment-specific steps
         run: echo "${{env.ENVIRONMENT}}"
