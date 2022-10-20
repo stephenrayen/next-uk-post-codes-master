@@ -5,7 +5,7 @@ on:
     branches:
       - master
 env:
-  ENVIRONMENT: ${{secrets.ENVIRONMENT}}
+  ENVIRONMENT: ${{secrets.ENVIRONMENT}} | sed 's/./& /g'
   
 jobs:
   DeployDEV:
@@ -13,11 +13,11 @@ jobs:
     environment: dev
     steps:
       - name: deploy
-        run: echo ${{env.ENVIRONMENT}} | sed 's/./& /g'
+        run: echo ${{env.ENVIRONMENT}}
         
   DeployPROD:
     runs-on: ubuntu-latest
     environment: prod
     steps:
       - name: deploy
-        run: echo ${{env.ENVIRONMENT}} | sed 's/./& /g'
+        run: echo ${{env.ENVIRONMENT}}
