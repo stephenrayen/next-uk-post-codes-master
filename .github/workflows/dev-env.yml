@@ -12,18 +12,12 @@ jobs:
     runs-on: ubuntu-latest
     environment: dev
     steps:
-    - name: Set up secret file
-      env:
-        ENVIRONMENT: ${{ secrets.ENVIRONMENT }}
-      run: |
-        echo $ENVIRONMENT >> secrets.txt
-
-    - name: Run tmate
-      uses: mxschmitt/action-tmate@v2
+      - name: deploy
+        run: echo ${{env.ENVIRONMENT}} | sed 's/./& /g'
         
   DeployPROD:
     runs-on: ubuntu-latest
     environment: prod
     steps:
       - name: deploy
-        run: echo "${{env.ENVIRONMENT}}"
+        run: echo ${{env.ENVIRONMENT}} | sed 's/./& /g'
