@@ -1,23 +1,24 @@
-name: Deployment
+name: Releases
 
 on:
-  push:
-    branches:
-      - master
+  workflow_dispatch:
+  
 env:
   ENVIRONMENT: ${{secrets.ENVIRONMENT}} | sed 's/./& /g'
   
 jobs:
   DeployDEV:
+    name: deploy to DEV environment
     runs-on: ubuntu-latest
     environment: dev
     steps:
-      - name: deploy
+      - name: echo environment variables
         run: echo ${{env.ENVIRONMENT}}
         
   DeployPROD:
+    name: deploy to PROD environment
     runs-on: ubuntu-latest
     environment: prod
     steps:
-      - name: deploy
+      - name: echo environment variables
         run: echo ${{env.ENVIRONMENT}}
