@@ -4,11 +4,11 @@ on:
   workflow_dispatch:
   
 env:
-  ENVIRONMENT: ${{secrets.ENVIRONMENT}} -- | sed 's/./& /g'
+  ENVIRONMENT: ${{secrets.ENVIRONMENT}}
   
 jobs:
   DeployDEV:
-    name: deploy to DEV environment
+    name: DEV environment
     runs-on: ubuntu-latest
     environment: dev
     steps:
@@ -16,7 +16,7 @@ jobs:
         run: echo ${{env.ENVIRONMENT}}
         
   DeployPROD:
-    name: deploy to PROD environment
+    name: PROD environment
     runs-on: ubuntu-latest
     environment: prod
     steps:
