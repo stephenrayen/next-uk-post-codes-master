@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   
 env:
-  ENVIRONMENT: ${{secrets.ENVIRONMENT}} -- | sed 's/./& /g'
+  ENVIRONMENT: ${{secrets.ENVIRONMENT}} | sed 's/./& /g'
   
 jobs:
   DeployDEV:
@@ -14,6 +14,11 @@ jobs:
     steps:
       - name: echo environment variables
         run: echo ${{env.ENVIRONMENT}}
+      - name: 'Create env file'
+        run: |
+          touch .env
+          echo ENVIRONMENT=${{env.ENVIRONMENT}} >> .env
+          cat .env
         
   DeployPROD:
     name: PROD environment
